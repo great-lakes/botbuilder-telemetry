@@ -35,7 +35,7 @@ function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMu
       }
 
       // OPTIONAL function: add/mutate and compute data before sending to endpoint
-      body = dataMutationFunction(session, event, configObject, body)
+      body = dataMutationFunction(body, session, event, configObject)
 
       // REQUIRED function: API/Endpoint/DB Connection calls
       dataHandleFunction(body)

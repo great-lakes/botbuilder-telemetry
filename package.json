@@ -1,10 +1,14 @@
 {
   "name": "botbuilder-telemetry",
-  "version": "0.1.1",
   "description": "Microsoft Botbuilder telemetry package for analytics.",
+  "version": "0.1.1",
   "homepage": "https://github.com/KSLHacks/botbuilder-telemetry",
   "bugs": {
     "url": "https://github.com/KSLHacks/botbuilder-telemetry/issues"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/KSLHacks/botbuilder-telemetry.git"
   },
   "main": "index.js",
   "scripts": {
