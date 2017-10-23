@@ -1,31 +1,37 @@
 {
   "name": "botbuilder-telemetry",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Botbuilder telemetry package for analytics.",
   "homepage": "https://github.com/KSLHacks/botbuilder-telemetry",
   "bugs": {
-    "url" : "https://github.com/KSLHacks/botbuilder-telemetry/issues"
+    "url": "https://github.com/KSLHacks/botbuilder-telemetry/issues"
   },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Microsoft", "botbuilder", "telemetry", "analytics", "bots"],
-  "author": { 
-    "name" : "Kevin Leung",
-    "twitter" : "https://twitter.com/kslhacks",
-    "url" : "http://KSLhacks.com/"
+  "keywords": [
+    "Microsoft",
+    "botbuilder",
+    "telemetry",
+    "analytics",
+    "bots"
+  ],
+  "author": {
+    "name": "Kevin Leung",
+    "twitter": "https://twitter.com/kslhacks",
+    "url": "http://KSLhacks.com/"
   },
   "contributors": [
-    { 
-    "name" : "Hao Luo",
-    "twitter" : "https://twitter.com/howlowck",
-    "url" : "http://blog.lifeishao.com/"
+    {
+      "name": "Hao Luo",
+      "twitter": "https://twitter.com/howlowck",
+      "url": "http://blog.lifeishao.com/"
     },
-    { 
-    "name" : "Heather Shapiro",
-    "twitter" : "https://twitter.com/microheather",
-    "url" : "http://microheather.com/"
+    {
+      "name": "Heather Shapiro",
+      "twitter": "https://twitter.com/microheather",
+      "url": "http://microheather.com/"
     }
   ],
   "license": "MIT"
