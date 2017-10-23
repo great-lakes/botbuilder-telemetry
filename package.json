@@ -1,0 +1,12 @@
+{
+  "name": "botbuilder-telemetry",
+  "version": "0.1.0",
+  "description": "Microsoft Botbuilder telemetry package for analytics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kevin Leung @KSLHacks",
+  "license": "MIT"
+}
