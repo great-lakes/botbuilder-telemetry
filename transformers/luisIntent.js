@@ -9,6 +9,8 @@ function luisIntent (session, messages, configObject) {
       }
       resolve(result.intent)
     })
+  }).then(result => {
+    return result
   })
 }
 
