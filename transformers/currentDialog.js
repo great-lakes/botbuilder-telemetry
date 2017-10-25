@@ -1,4 +1,4 @@
-function currentDialog (session, event, ConfigObject) {
+function currentDialog (session, messages, ConfigObject) {
   if (session.sessionState.callstack.length === 0) {
       // empty call stack
     return { dialog: '', step: 0 }

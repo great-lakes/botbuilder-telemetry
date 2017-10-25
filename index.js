@@ -1,5 +1,8 @@
+const botResponseLength = require('./transformers/botResponseLength')
 const currentDialog = require('./transformers/currentDialog')
 const dialogStack = require('./transformers/dialogStack')
+const botResponse = require('./transformers/botResponse')
+const luisIntent = require('./transformers/luisIntent')
 
 function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMutationFunction) {
   if (typeof dataMutationFunction === 'undefined') {
@@ -10,35 +13,30 @@ function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMu
 
   bot.use({
     botbuilder: function (session, next) {
-      bot.once('send', function (event) {
-        configObject.session = session  // save latest session data
-      })
-      next()
-    },
-    send: function (event, next) {
-      var session = configObject.session  // load session data
-      var body = {
-        botName: event.address.bot.name,
-        botChannel: event.address.channelId,
-        userName: session.message.user.name,
-        userMessage: session.message.text,
-        userMessageLength: session.message.text.length,
-        userMessageTimestamp: session.message.timestamp,
-        botResponse: event.text,
-        botResponseLength: event.text.length,
-        botResponseTimestamp: new Date().toJSON(),
-        botResponseLatency: (new Date().getTime() - new Date(session.message.timestamp).getTime()),
-        currentDialog: currentDialog(session, event, configObject),
-        dialogStack: dialogStack(session, event, configObject)
-        // luisIntent: luisIntent(session, event, configObject), // TODO triage
-        // qnaQuestionMatch: qnaQuestionMatch(session, event, configObject) // TODO triage
+      session.options.onSend = (messages, cb) => {
+        session.library.send(messages, cb)
+        var body = {
+          botName: messages[0].from.name,
+          userName: session.message.user.name,
+          userMessage: session.message.text,
+          userMessageLength: session.message.text.length,
+          userMessageTimestamp: session.message.timestamp,
+          botResponse: botResponse(session, messages, configObject),
+          botResponseLength: botResponseLength(session, messages, configObject),
+          botResponseTimestamp: new Date().toJSON(),
+          botResponseLatency: (new Date().getTime() - new Date(session.message.timestamp).getTime()),
+          currentDialog: currentDialog(session, messages, configObject),
+          dialogStack: dialogStack(session, messages, configObject),
+          luisIntent: luisIntent(session, messages, configObject)
+          // qnaQuestionMatch: qnaQuestionMatch(session, messages, configObject) // TODO triage
+        }
+
+        // OPTIONAL function: add/mutate and compute data before sending to endpoint
+        body = dataMutationFunction(body, session, messages, configObject)
+
+        // REQUIRED function: API/Endpoint/DB Connection calls
+        dataHandleFunction(body)
       }
-
-      // OPTIONAL function: add/mutate and compute data before sending to endpoint
-      body = dataMutationFunction(body, session, event, configObject)
-
-      // REQUIRED function: API/Endpoint/DB Connection calls
-      dataHandleFunction(body)
       next()
     }
   })
