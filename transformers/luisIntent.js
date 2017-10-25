@@ -3,7 +3,7 @@ function luisIntent (session, messages, configObject) {
     return null
   }
   return new Promise(resolve=>{
-    configObject.luisRecognizer.onRecognize(session.toRecognizeContext(), function (result) {
+    configObject.luisRecognizer.onRecognize(session.toRecognizeContext(), function (err,result) {
       resolve(result.intent)
     }) 
   })
