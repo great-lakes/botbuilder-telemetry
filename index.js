@@ -35,7 +35,7 @@ function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMu
         body = dataMutationFunction(body, session, messages, configObject)
 
         // REQUIRED function: API/Endpoint/DB Connection calls
-        dataHandleFunction(body)
+        dataHandleFunction(body, session, messages, configObject)
       }
       next()
     }
