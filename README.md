@@ -31,14 +31,14 @@ var configObject = {
 ```
 
 ## Step 2: dataMutationFunction (Optional)
-This function allows any processing and manipulation of the  body, session, message event and configObject. 
+This function allows any processing and manipulation of the  body, session, message messages and configObject. 
 
-`event` is the object response from the bot to user containing the text, options, attachments and other relevant information.
+`messages` is the object response from the bot to user containing the text, options, attachments and other relevant information.
 
 _Note: If no `dataMutationFunction()` is defined and passed in, the `body` payload will not be mutated and passed straight to the `dataHandleFunction()`, step 3._
 
 ```js
-function dataMutationFunction (body, session, event, configObject) {
+function dataMutationFunction (body, session, messages, configObject) {
     // The bot version - Managed by the bot developer
     // Add bot version to body if passed in through configObject
     if (typeof configObject.botVersion === 'undefined') { body.botVersion = configObject.botVersion }
@@ -56,7 +56,7 @@ After the `body` has gone through `dataMutationFunction()` (optional), it will b
 Ex. Sending the body to a test endpoint using `node-fetch` package.
 
 ```js
-function dataHandleFunction (body) {
+function dataHandleFunction (body, session, messages, configObject) {
   fetch('https://testEndpoint.com', {
     method: 'POST',
     headers: {
