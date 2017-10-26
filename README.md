@@ -2,6 +2,24 @@
 
 Microsoft Botbuilder telemetry package for analytics. Allows bot session, incoming and outgoing messages to be captured and consumed. This payload can be sent to any endpoint desired.
 
+## Telemetry Included
+```js
+botName                 // "Test-Bot"
+userName                // "Kevin L."
+userMessage             // "hello"
+userMessageLength       // 5
+userMessageTimestamp    // 2017-10-26T20:21:54.977Z
+botResponse             // Array(1) ["Hello! I am your friendly bot."]
+botResponseLength       // 10
+botResponseTimestamp    // 2017-10-26T20:21:57.424Z
+botResponseLatency      // 2447
+currentDialog           // Object {dialog: "*:/", step: 0}
+dialogStack             // "*:/"
+luisIntent              // "greeting"
+```
+___
+## Resources and Links
+
 [botbuilder-telemetry NPM package](https://www.npmjs.com/package/botbuilder-telemetry)
 
 [botbuilder-telemtry Github](https://github.com/KSLHacks/botbuilder-telemetry)
@@ -10,6 +28,7 @@ Microsoft Botbuilder telemetry package for analytics. Allows bot session, incomi
 
 [Microsoft Bot Framework Documentation](https://dev.botframework.com/)
 
+___
 ## Install
 `npm install botbuilder-telemetry`
 
