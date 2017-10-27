@@ -40,6 +40,7 @@ This allows any object to be passed into the middleware, which will be available
 
 Ex. If you require the `botVersion` to be included in the payload, you can specify the version in the `configObject` and add this property onto the body within the `dataMutationFunction()`.
 
+_Note: If you would like LUIS intents included in the payload, you must pass in the recognizer (see example/app.js)_
 _Note: If you do not require any config variables, create an empty object and pass it in._
 
 ```js

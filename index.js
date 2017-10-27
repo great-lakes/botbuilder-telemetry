@@ -1,9 +1,9 @@
 const botResponseLength = require('./transformers/botResponseLength')
+const qnaQuestionMatch = require('./transformers/qnaQuestionMatch')
 const currentDialog = require('./transformers/currentDialog')
 const dialogStack = require('./transformers/dialogStack')
 const botResponse = require('./transformers/botResponse')
 const luisIntent = require('./transformers/luisIntent')
-const qnaQuestionMatch = require('./transformers/qnaQuestionMatch')
 
 function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMutationFunction) {
   if (typeof dataMutationFunction === 'undefined') {
