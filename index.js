@@ -3,6 +3,7 @@ const currentDialog = require('./transformers/currentDialog')
 const dialogStack = require('./transformers/dialogStack')
 const botResponse = require('./transformers/botResponse')
 const luisIntent = require('./transformers/luisIntent')
+const qnaQuestionMatch = require('./transformers/qnaQuestionMatch')
 
 function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMutationFunction) {
   if (typeof dataMutationFunction === 'undefined') {
@@ -27,8 +28,8 @@ function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMu
           botResponseLatency: (new Date().getTime() - new Date(session.message.timestamp).getTime()),
           currentDialog: currentDialog(session, messages, configObject),
           dialogStack: dialogStack(session, messages, configObject),
-          luisIntent: luisIntent(session, messages, configObject)
-          // qnaQuestionMatch: qnaQuestionMatch(session, messages, configObject) // TODO triage
+          luisIntent: luisIntent(session, messages, configObject),
+          qnaQuestionMatch: qnaQuestionMatch(session, messages, configObject) // TODO triage
         }
 
         // OPTIONAL function: add/mutate and compute data before sending to endpoint
