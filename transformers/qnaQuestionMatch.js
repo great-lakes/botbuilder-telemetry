@@ -3,7 +3,7 @@ function qnaQuestionMatch (session, messages, configObject) {
     return null
   }
   return new Promise((resolve, reject) => {
-    configObject.qnaRecognizer.recognize(session.toRecognizeContext(), function (err, result) {
+    configObject.qnaRecognizer.onRecognize(session.toRecognizeContext(), function (err, result) {
       if (err) {
         reject(err)
       } else {
