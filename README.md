@@ -2,19 +2,19 @@
 
 Microsoft Botbuilder telemetry package for analytics. Allows bot session, incoming and outgoing messages, and LUIS recognizer to be captured and consumed. This payload can be sent to any endpoint desired.
 
-## Telemetry Included
+## Telemetry Included (predefined `body` payload)
 ```js
 botName                 // "Test-Bot"
 userName                // "Kevin L."
 userMessage             // "hello"
 userMessageLength       // 5
 userMessageTimestamp    // 2017-10-26T20:21:54.977Z
-botResponse             // Array(1) ["Hello! I am your friendly bot."]
+botResponse             // string[] ["Hello! I am your friendly bot."]
 botResponseLength       // 10
 botResponseTimestamp    // 2017-10-26T20:21:57.424Z
 botResponseLatency      // 2447
 currentDialog           // Object {dialog: "*:/", step: 0}
-dialogStack             // "*:/"
+dialogStack             // string[] ["*:/", "*:/greeting"]
 luisIntent              // "greeting"
 ```
 ___
@@ -22,7 +22,7 @@ ___
 
 [botbuilder-telemetry NPM package](https://www.npmjs.com/package/botbuilder-telemetry)
 
-[botbuilder-telemtry Github](https://github.com/KSLHacks/botbuilder-telemetry)
+[botbuilder-telemetry Github](https://github.com/KSLHacks/botbuilder-telemetry)
 
 [Microsoft Bot Builder SDK](https://github.com/Microsoft/BotBuilder)
 
@@ -53,11 +53,11 @@ var configObject = {
 ```
 
 ## Step 2: dataMutationFuncOrPromise (Optional)
-This function or promise allows any processing and manipulation of the  body, session, messages, recognizer and configObject. 
+This function or promise allows any processing and manipulation of the `body` payload, based on the predefined body payload, session, messages, recognizer and configObject.
 
 `messages` is the object response from the bot to user containing the text, options, attachments and other relevant information.
 
-_Note: If `dataMutationFuncOrPromise()` is not defined, the `body` payload will not be mutated and passed straight to the `dataHandleFunction()`, step 3._
+_Note: If `dataMutationFuncOrPromise()` is not defined, the predefined `body` payload will not be mutated and passed straight to the `dataHandleFunction()`, step 3._
 
 ```js
 function dataMutationFunction (body, session, messages, configObject) {
@@ -98,7 +98,7 @@ function dataHandleFunction (body, session, messages, configObject) {
 ```
 
 ## Step 4: Apply middleware
-This step is necessary to utilize this telemetry package.
+This step is necessary to utilize this telemetry package.  Make sure to apply the middleware right after you create your bot instance.
 
 ```js
 // from Microsoft botbuilder SDK
@@ -106,6 +106,8 @@ var bot = new builder.UniversalBot(connector)
 
 // Use botbuilder-telemetry package
 bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
+
+// ... Rest of your bot definition
 ```
 
 ## Contributors
@@ -120,7 +122,7 @@ bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutati
   "name": "Hao Luo",
   "twitter": "https://twitter.com/howlowck",
   "github": "https://github.com/howlowck",
-  "url": "http://blog.lifeishao.com/"
+  "url": "https://blog.lifeishao.com/"
 },
 {
   "name": "Heather Shapiro",
