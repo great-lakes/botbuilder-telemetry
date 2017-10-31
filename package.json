@@ -2,6 +2,9 @@
   "name": "botbuilder-telemetry",
   "description": "Microsoft Botbuilder telemetry package for analytics.",
   "version": "0.1.7",
+  "engines" : {
+    "node" : ">=6.5.0"
+  },
   "homepage": "https://github.com/KSLHacks/botbuilder-telemetry",
   "bugs": {
     "url": "https://github.com/KSLHacks/botbuilder-telemetry/issues"
@@ -12,7 +15,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava tests/**/*.test.js"
   },
   "keywords": [
     "Microsoft",
@@ -38,5 +41,8 @@
       "url": "http://microheather.com/"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.23.0"
+  }
 }
