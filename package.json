@@ -1,7 +1,7 @@
 {
   "name": "botbuilder-telemetry",
   "description": "Microsoft Botbuilder telemetry package for analytics.",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "homepage": "https://github.com/KSLHacks/botbuilder-telemetry",
   "bugs": {
     "url": "https://github.com/KSLHacks/botbuilder-telemetry/issues"
