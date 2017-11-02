@@ -2,34 +2,34 @@ const test = require('ava')
 const dialogStack = require('../../transformers/dialogStack')
 const {defaultSession, defaultMessages, defaultConfigObject, callstacks} = require('./testData')
 
-test(t => {
+test('Empty stack', t => {
   defaultSession.sessionState.callstack = callstacks.noStack
   const actual = dialogStack(defaultSession, defaultMessages, defaultConfigObject)
-  const expected = {}
+  const expected = []
 
-  t.deepEqual(actual, expected, 'testing no stack (root)')
+  t.deepEqual(actual, expected, 'testing root')
 })
 
-test(t => {
+test('Root stack', t => {
   defaultSession.sessionState.callstack = callstacks.greetingStack
   const actual = dialogStack(defaultSession, defaultMessages, defaultConfigObject)
-  const expected = '*:/'
+  const expected = ['*:/']
 
-  t.deepEqual(actual, expected, 'testing one stack (greeting)')
+  t.deepEqual(actual, expected, 'testing greeting')
 })
 
-test(t => {
+test('Choice stack', t => {
   defaultSession.sessionState.callstack = callstacks.choiceStack
   const actual = dialogStack(defaultSession, defaultMessages, defaultConfigObject)
   const expected = ['*:/', '*:/mainMenu']
 
-  t.deepEqual(actual, expected, 'testing choice stack (greeting)')
+  t.deepEqual(actual, expected, 'testing main menu')
 })
 
-test(t => {
+test('Prompt stack', t => {
   defaultSession.sessionState.callstack = callstacks.promptStack
   const actual = dialogStack(defaultSession, defaultMessages, defaultConfigObject)
   const expected = ['*:/', '*:/mainMenu', '*:/setName']
 
-  t.deepEqual(actual, expected, 'testing prompt stack (greeting)')
+  t.deepEqual(actual, expected, 'testing prompts')
 })
