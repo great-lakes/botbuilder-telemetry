@@ -50,6 +50,56 @@ const callstacks = {
       lastTurn: 1509474340695,
       isReprompt: false
     }
+  }],
+  promptStack_step1: [{
+    id: '*:/',
+    state: {
+      'BotBuilder.Data.Intent': 'mainMenu',
+      'BotBuilder.Data.WaterfallStep': 0
+    }
+  }, {
+    id: '*:/mainMenu',
+    state: {
+      'BotBuilder.Data.WaterfallStep': 1
+    }
+  }, {
+    id: '*:/setName',
+    state: {
+      'BotBuilder.Data.WaterfallStep': 1
+    }
+  }, {
+    id: 'BotBuilder:prompt-text',
+    state: {
+      options: {/* mocked object TODO: fill this out more */ },
+      turns: 0,
+      lastTurn: 1509474340695,
+      isReprompt: false
+    }
+  }],
+  promptStack_step2: [{
+    id: '*:/',
+    state: {
+      'BotBuilder.Data.Intent': 'mainMenu',
+      'BotBuilder.Data.WaterfallStep': 0
+    }
+  }, {
+    id: '*:/mainMenu',
+    state: {
+      'BotBuilder.Data.WaterfallStep': 1
+    }
+  }, {
+    id: '*:/setName',
+    state: {
+      'BotBuilder.Data.WaterfallStep': 2
+    }
+  }, {
+    id: 'BotBuilder:prompt-text',
+    state: {
+      options: {/* mocked object TODO: fill this out more */ },
+      turns: 0,
+      lastTurn: 1509474340695,
+      isReprompt: false
+    }
   }]
 }
 
