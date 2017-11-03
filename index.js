@@ -3,7 +3,6 @@ const botResponseLength = require('./transformers/botResponseLength')
 const currentDialog = require('./transformers/currentDialog')
 const dialogStack = require('./transformers/dialogStack')
 const botResponse = require('./transformers/botResponse')
-// const luisIntent = require('./transformers/luisIntent')
 
 function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMutationFuncOrPromise = (data) => data) {
   const dataMutationPromise = (body, session, messages, configObject) => {
@@ -30,7 +29,7 @@ function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMu
       currentDialog: currentDialog(session, messages, configObject),
       dialogStack: dialogStack(session, messages, configObject),
       luisIntent: luisResult ? luisResult.intent : null
-      // qnaQuestionMatch: qnaQuestionMatch(session, messages, configObject) // TODO triage
+      // qnaQuestionMatch: qnaQuestionMatch(session, messages, configObject) // TODO submit PR
     }
 
     // A promise to add/mutate and compute data before sending to endpoint

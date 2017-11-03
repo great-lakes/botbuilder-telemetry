@@ -40,8 +40,6 @@ var configObject = {
   'botVersion': 'v3',
   'luisRecognizer': recognizer,
   'include': {
-    'luis': true,
-    'qna': false,
     'foo': 'bar'
   }
 }
@@ -64,7 +62,7 @@ function dataHandleFunction (body) {
 }
 
 // OPTIONAL function: add/mutate and compute data before sending to endpoint
-function dataMutationFunction (body, session, event, configObject) {
+function dataMutationFuncOrPromise (body, session, event, configObject) {
     // The user message - Cleaned, capped at 255 characters.
   body.userMessage = body.userMessage.trim()
   if (body.userMessage.length > 255) { body.userMessage = body.userMessage.substring(0, 255) }
@@ -85,8 +83,8 @@ function dataMutationFunction (body, session, event, configObject) {
   }
 }
 
-bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFunction)
-// bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction) // use this if no dataMutationFunction is defined
+bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
+// bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction) // use this if no dataMutationFuncOrPromise is defined
 
 // =========================================================
 // Bots Dialogs

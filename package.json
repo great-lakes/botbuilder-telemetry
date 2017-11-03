@@ -1,7 +1,7 @@
 {
   "name": "botbuilder-telemetry",
   "description": "Microsoft Botbuilder telemetry package for analytics.",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "engines": {
     "node": ">=6.5.0"
   },
@@ -33,7 +33,7 @@
     {
       "name": "Hao Luo",
       "twitter": "https://twitter.com/howlowck",
-      "url": "http://blog.lifeishao.com/"
+      "url": "https://blog.lifeishao.com/"
     },
     {
       "name": "Heather Shapiro",
