@@ -6,12 +6,15 @@ const botResponse = require('./transformers/botResponse')
 
 function ApplyTelemetryMiddleware (bot, configObject, dataHandleFunction, dataMutationFuncOrPromise = (data) => data) {
   const dataMutationPromise = (body, session, messages, configObject) => {
-    if (typeof dataMutationFuncOrPromise.then === 'undefined') {
-      return new Promise((resolve, reject) => {
-        resolve(dataMutationFuncOrPromise(body, session, messages, configObject))
-      })
+    const objOrPromise = dataMutationFuncOrPromise(body, session, messages, configObject)
+
+    if (typeof objOrPromise.then === 'function') {
+      return objOrPromise
     }
-    return dataMutationFuncOrPromise(body, session, messages, configObject)
+
+    return new Promise((resolve, reject) => {
+      resolve(objOrPromise)
+    })
   }
 
   const onSend = (session, luisResult, qnaResult) => (messages, cb) => {
