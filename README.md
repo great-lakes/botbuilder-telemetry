@@ -1,4 +1,4 @@
-# botbuilder-telemetry
+# botbuilder-telemetry [![Build Status](https://travis-ci.org/KSLHacks/botbuilder-telemetry.svg?branch=master)](https://travis-ci.org/KSLHacks/botbuilder-telemetry)
 
 Microsoft Botbuilder telemetry package for analytics. Allows bot session, incoming and outgoing messages, and LUIS recognizer to be captured and consumed. This payload can be sent to any endpoint desired.
 
