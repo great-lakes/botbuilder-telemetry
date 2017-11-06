@@ -1,9 +1,9 @@
 function dialogStack (session, messages, ConfigObject) {
   if (session.sessionState.callstack.length === 0) {
-    return { }
+    return []
   }
   if (session.sessionState.callstack.length === 1) {
-    return session.sessionState.callstack[0].id
+    return [session.sessionState.callstack[0].id]
   }
   return session.sessionState.callstack
             .slice(0, (session.sessionState.callstack.length - 1))
