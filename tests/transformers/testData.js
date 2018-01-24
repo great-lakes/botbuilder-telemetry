@@ -331,10 +331,89 @@ const twoMessages = [
     text: 'Your name is now updated.' }
 ]
 
+const richCardButtonsMessage = [
+  {
+    'type': 'message',
+    'attachments': [
+      {
+        'contentType': 'application/vnd.microsoft.card.thumbnail',
+        'content': {
+          'title': 'Men',
+          'images': [
+            {
+              'url': ''
+            }
+          ],
+          'buttons': [],
+          'tap': {
+            'type': 'imBack',
+            'value': 'Men',
+            'title': 'Men'
+          }
+        }
+      },
+      {
+        'contentType': 'application/vnd.microsoft.card.thumbnail',
+        'content': {
+          'title': 'Women',
+          'subtitle': 'Providing the best cycling experience for all women, from beginners to experts.',
+          'images': [
+            {
+              'url': ''
+            }
+          ],
+          'buttons': [],
+          'tap': {
+            'type': 'imBack',
+            'value': 'Women',
+            'title': 'Women'
+          }
+        }
+      },
+      {
+        'contentType': 'application/vnd.microsoft.card.thumbnail',
+        'content': {
+          'title': 'Kids (12 & under)',
+          'subtitle': 'A dialed ride kids younger than 13 years or shorter than 5 feet (153 cm).',
+          'images': [
+            {
+              'url': ''
+            }
+          ],
+          'buttons': [],
+          'tap': {
+            'type': 'imBack',
+            'value': 'Kids (12 & under)',
+            'title': 'Kids (12 & under)'
+          }
+        }
+      }
+    ],
+    'inputHint': 'expectingInput',
+    'locale': 'fr-FR',
+    'localTimestamp': '2018-01-24T10:52:49-06:00',
+    'from': {
+      'id': 'default-bot',
+      'name': 'Bot'
+    },
+    'recipient': {
+      'id': 'default-user'
+    },
+    'id': 'i7a17cgmasw15',
+    'replyToId': 'ah1eae4069i3',
+    'channelId': 'emulator',
+    'timestamp': '2018-01-24T16:52:49.989Z',
+    'conversation': {
+      'id': 'a8ad4205c7ik'
+    }
+  }
+]
+
 module.exports = {
   defaultSession,
   defaultMessages,
   defaultConfigObject,
   twoMessages,
-  callstacks
+  callstacks,
+  richCardButtonsMessage
 }

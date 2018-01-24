@@ -1,6 +1,6 @@
 function botResponseLength (session, messages, ConfigObject) {
   return messages.map(function (item) {
-    return item.text.length
+    return item.text ? item.text.length : 0
   })
 }
 

@@ -1,6 +1,6 @@
 const test = require('ava')
 const botResponseLength = require('../../transformers/botResponseLength')
-const {defaultSession, defaultMessages, defaultConfigObject, twoMessages} = require('./testData')
+const {defaultSession, defaultMessages, defaultConfigObject, twoMessages, richCardButtonsMessage} = require('./testData')
 
 test('Single-message response', t => {
   const actual = botResponseLength(defaultSession, defaultMessages, defaultConfigObject)
@@ -14,4 +14,11 @@ test('Multi-message response', t => {
   const expected = [20, 25]
 
   t.deepEqual(actual, expected, 'two message response')
+})
+
+test('Rich-message response', t => {
+  const actual = botResponseLength(defaultSession, richCardButtonsMessage, defaultConfigObject)
+  const expected = [0]
+
+  t.deepEqual(actual, expected, 'Rich Message with no text')
 })
