@@ -3,7 +3,7 @@ require('dotenv').config()
 const restify = require('restify')
 const builder = require('botbuilder')
 const fetch = require('node-fetch')
-const ApplyTelemetryMiddleware = require('botbuilder-telemetry')
+const applyTelemetryMiddleware = require('botbuilder-telemetry')
 
 // =========================================================
 // Bot Setup
@@ -83,8 +83,8 @@ function dataMutationFuncOrPromise (body, session, event, configObject) {
   }
 }
 
-bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
-// bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction) // use this if no dataMutationFuncOrPromise is defined
+bot = applyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
+// bot = applyTelemetryMiddleware(bot, configObject, dataHandleFunction) // use this if no dataMutationFuncOrPromise is defined
 
 // =========================================================
 // Bots Dialogs

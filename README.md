@@ -108,7 +108,7 @@ This step is necessary to utilize this telemetry package.  Make sure to apply th
 var bot = new builder.UniversalBot(connector) 
 
 // Use botbuilder-telemetry package
-bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
+bot = applyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
 
 // ... Rest of your bot definition
 ```
