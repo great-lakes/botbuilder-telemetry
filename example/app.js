@@ -38,6 +38,7 @@ var dialog = new builder.IntentDialog({recognizers: [recognizer]})
 //  if you would like LUIS intents included in the payload, you must pass in the recognizer through 'luisRecognizer' (below)
 var configObject = {
   'botVersion': 'v3',
+  // required for LUIS query/intent telemetry
   'luisRecognizer': recognizer,
   'include': {
     'foo': 'bar'

@@ -6,18 +6,18 @@ Microsoft Botbuilder telemetry package for analytics. Allows bot session, incomi
 
 ## Telemetry Included (predefined `body` payload)
 ```js
-botName                 // "Test-Bot"
-userName                // "Kevin L."
-userMessage             // "hello"
-userMessageLength       // 5
-userMessageTimestamp    // 2017-10-26T20:21:54.977Z
-botResponse             // string[] ["Hello! I am your friendly bot."]
-botResponseLength       // 10
-botResponseTimestamp    // 2017-10-26T20:21:57.424Z
-botResponseLatency      // 2447
-currentDialog           // Object {dialog: "*:/", step: 0}
-dialogStack             // string[] ["*:/", "*:/greeting"]
-luisIntent              // "greeting"
+botName: string                                 // "Test-Bot"
+userName: string                                // "Foo Bar"
+userMessage: string                             // "hello"
+userMessageLength: number                       // 5
+userMessageTimestamp: string                    // 2017-10-26T20:21:54.977Z
+botResponse: string[]                           // ["Hello! I am your friendly bot."]
+botResponseLength: number                       // 10
+botResponseTimestamp: string                    // 2017-10-26T20:21:57.424Z
+botResponseLatency: number                      // 2447
+currentDialog: {dialog: string, step: number}   // Object {dialog: "*:/", step: 0}
+dialogStack: string[]                           // string[] ["*:/", "*:/greeting"]
+luisIntent: string                              // "greeting"
 ```
 ___
 ## Resources and Links
@@ -49,34 +49,13 @@ _Note: If you do not require any config variables, create an empty object and pa
 ```js
 var configObject = {
   'botVersion': 'v3',
-  'luisRecognizer': luisRecognizer,
+  // required for LUIS query/intent telemetry
+  'luisRecognizer': luisRecognizer, 
   'foo': 'bar'
 }
 ```
 
-## Step 2: dataMutationFuncOrPromise (Optional)
-This function or promise allows any processing and manipulation of the `body` payload, based on the predefined body payload, session, messages, recognizer and configObject.
-
-`messages` is the object response from the bot to user containing the text, options, attachments and other relevant information.
-
-_Note: If `dataMutationFuncOrPromise()` is not defined, the predefined `body` payload will not be mutated and passed straight to the `dataHandleFunction()`, step 3._
-
-```js
-function dataMutationFunction (body, session, messages, configObject) {
-    // The bot version - Managed by the bot developer
-    // Add bot version to body if passed in through configObject
-    if (typeof configObject.botVersion === 'undefined') { 
-      body.botVersion = configObject.botVersion 
-    }
-
-    // Restrict user message to 100 characters and update body
-    if (body.userMessage.length > 100) { 
-      body.userMessage = body.userMessage.substring(0, 100)
-    }
-  }
-```
-
-## Step 3: dataHandleFunction (Required)
+## Step 2: dataHandleFunction (Required)
 After the `body` has gone through `dataMutationFuncOrPromise()` (optional), it will be ready to send to any endpoint/api/storage you choose. You can create any request call within this function. This will be the last step in the sequence for this pipeline.
 
 Ex. Sending the body to a test endpoint using `node-fetch` package.
@@ -97,6 +76,28 @@ function dataHandleFunction (body, session, messages, configObject) {
     console.log(json)
   })
 }
+```
+
+## Step 3: dataMutationFuncOrPromise (Optional)
+This function or promise allows any processing and manipulation of the `body` payload, based on the predefined body payload, session, messages, recognizer and configObject.
+
+`messages` is the object response from the bot to user containing the text, options, attachments and other relevant information.
+
+_Note: If `dataMutationFuncOrPromise()` is not defined, the predefined `body` payload will not be mutated and passed straight to the `dataHandleFunction()`, step 3._
+
+```js
+function dataMutationFunction (body, session, messages, configObject) {
+    // The bot version - Managed by the bot developer
+    // Add bot version to body if passed in through configObject
+    if (typeof configObject.botVersion === 'undefined') { 
+      body.botVersion = configObject.botVersion 
+    }
+
+    // Restrict user message to 100 characters and update body
+    if (body.userMessage.length > 100) { 
+      body.userMessage = body.userMessage.substring(0, 100)
+    }
+  }
 ```
 
 ## Step 4: Apply middleware
