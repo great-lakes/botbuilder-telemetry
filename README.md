@@ -16,7 +16,7 @@ botResponseLength: number                       // 10
 botResponseTimestamp: string                    // 2017-10-26T20:21:57.424Z
 botResponseLatency: number                      // 2447
 currentDialog: {dialog: string, step: number}   // Object {dialog: "*:/", step: 0}
-dialogStack: string[]                           // string[] ["*:/", "*:/greeting"]
+dialogStack: string[]                           // ["*:/", "*:/greeting"]
 luisIntent: string                              // "greeting"
 ```
 ___
@@ -108,7 +108,7 @@ This step is necessary to utilize this telemetry package.  Make sure to apply th
 var bot = new builder.UniversalBot(connector) 
 
 // Use botbuilder-telemetry package
-bot = ApplyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
+bot = applyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutationFuncOrPromise)
 
 // ... Rest of your bot definition
 ```

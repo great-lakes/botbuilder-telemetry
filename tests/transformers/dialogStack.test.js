@@ -33,3 +33,11 @@ test('Prompt stack', t => {
 
   t.deepEqual(actual, expected, 'testing prompts')
 })
+
+test('Prompt stack stringify', t => {
+  defaultSession.sessionState.callstack = callstacks.promptStack
+  const actual = '' + dialogStack(defaultSession, defaultMessages, defaultConfigObject)
+  const expected = '["*:/","*:/mainMenu","*:/setName"]'
+
+  t.deepEqual(actual, expected, 'testing prompts')
+})
