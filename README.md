@@ -2,7 +2,10 @@
 
 [![Build Status](https://travis-ci.org/KSLHacks/botbuilder-telemetry.svg?branch=master)](https://travis-ci.org/KSLHacks/botbuilder-telemetry)
 
-Microsoft Botbuilder telemetry package for analytics. Allows bot session, incoming and outgoing messages, and LUIS recognizer to be captured and consumed. This payload can be sent to any endpoint desired.
+Microsoft Botbuilder telemetry package for analytics. Allows bot session, incoming and outgoing messages, and LUIS recognizer to be captured and consumed. This payload can be sent to any endpoint desired. Microsoft [Application Insights] metrics can also be used with `botbuilder-telemetry` payload.
+
+[Application Insights]: https://azure.microsoft.com/en-us/services/application-insights/
+
 
 ## Telemetry Included (predefined `body` payload)
 ```js
@@ -34,9 +37,18 @@ ___
 # Install
 `npm install botbuilder-telemetry`
 
-# Usage
-See examples folder for full `app.js` example.
+# Usage Examples
+## Simple example
+See [example/simple] folder for full `app.js` example.
 
+## Microsoft Application Insights Example
+See [example/applicationInsights] folder for full `applicationInsights.js` example.
+
+
+[example/simple]: https://github.com/KSLHacks/botbuilder-telemetry/tree/master/example
+[example/applicationInsights]: https://github.com/KSLHacks/botbuilder-telemetry/tree/master/example/applicationInsights
+
+# Usage
 ## Step 1: Configuration Object (Required)
 This allows any object to be passed into the middleware, which will be available within the `dataMutationFuncOrPromise()`. This is useful if you wish to pass in default values to the body payload.
 
@@ -112,7 +124,6 @@ bot = applyTelemetryMiddleware(bot, configObject, dataHandleFunction, dataMutati
 
 // ... Rest of your bot definition
 ```
-
 ## Contributors
 ```js
 {
