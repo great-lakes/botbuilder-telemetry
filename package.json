@@ -5,13 +5,13 @@
   "engines": {
     "node": ">=6.5.0"
   },
-  "homepage": "https://github.com/KSLHacks/botbuilder-telemetry",
+  "homepage": "https://github.com/great-lakes/botbuilder-telemetry",
   "bugs": {
-    "url": "https://github.com/KSLHacks/botbuilder-telemetry/issues"
+    "url": "https://github.com/great-lakes/botbuilder-telemetry/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/KSLHacks/botbuilder-telemetry.git"
+    "url": "git://github.com/great-lakes/botbuilder-telemetry.git"
   },
   "main": "index.js",
   "scripts": {
